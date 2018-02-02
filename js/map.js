@@ -53,9 +53,9 @@ var INCOMING_PARAMETERS = {
   ],
   PHOTOS: {
     SRC: [
-      "http://o0.github.io/assets/images/tokyo/hotel1.jpg",
-      "http://o0.github.io/assets/images/tokyo/hotel2.jpg",
-      "http://o0.github.io/assets/images/tokyo/hotel3.jpg"
+      'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
+      'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
+      'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
     ],
     WIDTH: 70,
     HEIGHT: 50
@@ -96,7 +96,7 @@ var getRandomMixedArray = function (array) {
     array[j] = temp;
   }
   return array;
-}
+};
 
 var getRandomListElementArray = function (array) {
   var randonCountElement = Math.floor(Math.random() * (array.length) + 1);
