@@ -34,7 +34,7 @@
           window.formFieldSet[i].disabled = false;
         }
       }
-      window.createMapPins();
+      window.backend.load(window.createMapPins, window.errorHandler);
     }
     var startCoords = {
       x: evt.clientX,
@@ -90,32 +90,5 @@
 
     document.addEventListener('mousemove', onMouseMoveMapPinMain);
     document.addEventListener('mouseup', onMouseUpMapPinMain);
-    /*
-    var restrictLocation = function (number, locationMin, locationMax) {
-      if (number >= locationMin && number <= locationMax) {
-        return number;
-      } else if (number < locationMin) {
-        return locationMin;
-      } else {
-        return locationMax;
-      }
-    };
-    var coordinateX = restrictLocation(evt.pageX, window.INCOMING_PARAMETERS.LOCATION.X.MIN, window.INCOMING_PARAMETERS.LOCATION.X.MAX);
-    var coordinateY = restrictLocation(evt.pageY - window.INCOMING_PARAMETERS.PIN.HEIGHT / 2, window.INCOMING_PARAMETERS.LOCATION.Y.MIN, window.INCOMING_PARAMETERS.LOCATION.Y.MAX);
-    var addressInput = document.querySelector('#address');
-    addressInput.value = 'X: ' + coordinateX + ',Y: ' + coordinateY;
-    if (numberClickMapPinMain < 1) {
-      window.map.classList.remove('map--faded');
-      window.noticeForm.classList.remove('notice__form--disabled');
-
-      for (var i = 0; i < window.formFieldSet.length; i++) {
-        if (window.formFieldSet[i].disabled) {
-          window.formFieldSet[i].disabled = false;
-        }
-      }
-
-      window.createMapPins();
-    }
-    numberClickMapPinMain++;*/
   });
 }());
