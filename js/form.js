@@ -16,6 +16,17 @@
     object.removeAttribute('style');
   };
 
+  window.errorHandler = function (errorMessage) {
+    var errorWindow = document.createElement('div');
+    errorWindow.setAttribute('style', 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;');
+    errorWindow.style.position = 'absolute';
+    errorWindow.style.left = 0;
+    errorWindow.style.right = 0;
+    errorWindow.style.fontSize = '30px';
+    errorWindow.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', errorWindow);
+  };
+
   var titleInput = document.querySelector('#title');
   titleInput.addEventListener('invalid', function () {
     showInputError(titleInput);
@@ -132,5 +143,12 @@
         capacitySelectItem[2].disabled = true;
         break;
     }
+  });
+
+  window.noticeForm.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(window.noticeForm), function () {
+      window.noticeForm.reset();
+    }, window.errorHandler);
+    evt.preventDefault();
   });
 }());
