@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-
   var showInputError = function (object) {
     object.setAttribute('style', 'border-color: red;');
   };

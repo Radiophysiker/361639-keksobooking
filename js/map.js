@@ -4,6 +4,14 @@
   var mapPinMain = window.map.querySelector('.map__pin--main');
   var offsetMapPinMain = 50;
   var numberClickMapPinMain = 0;
+  var DEBOUNCE_INTERVAL = 5000;
+  var lastTimeout;
+  var debounce = function (fun) {
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(fun, DEBOUNCE_INTERVAL);
+  };
   var setFadedClass = function (object, nameClass) {
     if (!object.classList.contains(nameClass)) {
       object.classList.add(nameClass);
@@ -34,7 +42,12 @@
           window.formFieldSet[i].disabled = false;
         }
       }
-      window.backend.load(window.createMapPins, window.errorHandler);
+      window.backend.load(window.pin.createMapPins, window.errorHandler);
+      var filters = window.map.querySelector('.map__filters');
+      filters.addEventListener('change', function () {
+        window.pin.createMapPins(window.incommingArray);
+        debounce(window.pin.createMapPins);
+      });
     }
     var startCoords = {
       x: evt.clientX,

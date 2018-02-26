@@ -13,7 +13,7 @@
       if (xhr.status === SERVER_CODE) {
         onSuccess(xhr.response);
       } else {
-        onError(xhr.response);
+        onError('Ошибка ' + xhr.status + ' ' + xhr.statusText);
       }
     });
     xhr.addEventListener('error', function () {
