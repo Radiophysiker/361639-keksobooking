@@ -5,14 +5,14 @@ window.pin = (function () {
     var mapPinTemplate = document.querySelector('template').content.querySelector('.map__pin');
     var mapPin = mapPinTemplate.cloneNode(true);
     var mapPinImg = mapPin.querySelector('img');
-	var KEY_CODE = {
-		ESC: 27,
-		ENTER: 13
-	  };
-	var PIN = {
+    var KEY_CODE = {
+      ESC: 27,
+      ENTER: 13
+    };
+    var PIN = {
       WIDTH: 50,
       HEIGHT: 70
-    }
+    };
     var openPupup = function () {
       var mapPinActive = document.querySelector('.map__pin--active');
       if (mapPinActive) {
@@ -59,7 +59,11 @@ window.pin = (function () {
   return {
 
     createMapPins: function (arr) {
-      window.incommingArray = arr.slice();
+      if (typeof (arr) === 'undefined') {
+        arr = window.incommingArray;
+      } else {
+        window.incommingArray = arr.slice();
+      }
       var MAX_LIMIT_PINS = 5;
       arr = window.filters(arr);
       var mapPins = document.querySelector('.map__pins');

@@ -79,9 +79,9 @@
     showInputError(priceInput);
     if (priceInput.type !== 'number') {
       priceInput.setCustomValidity('Введи число');
-    } else if (priceInput.value < minPrice) {
+    } else if (priceInput.value < parseInt(minPrice, 10)) {
       priceInput.setCustomValidity('Минимальное значение — ' + minPrice);
-    } else if (priceInput.value > priceInput.max) {
+    } else if (priceInput.value > parseInt(priceInput.max, 10)) {
       priceInput.setCustomValidity('Макcимальное значение — ' + priceInput.max);
     } else if (priceInput.validity.valueMissing) {
       validationError(priceInput);
@@ -115,7 +115,7 @@
   var capacitySelect = document.querySelector('#capacity');
   var capacitySelectItem = capacitySelect.querySelectorAll('option');
 
-  numbersRoomSelect.addEventListener('input', function () { 
+  numbersRoomSelect.addEventListener('input', function () {
     for (var i = 0; i < capacitySelectItem.length; i++) {
       capacitySelectItem[i].disabled = false;
     }

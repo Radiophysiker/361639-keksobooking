@@ -4,9 +4,9 @@ window.card = (function () {
 
   var mapCard = document.querySelector('template').content.querySelector('.map__card').cloneNode(true);
   var PHOTOS = {
-      WIDTH: 65,
-      HEIGHT: 50
-   }
+    WIDTH: 65,
+    HEIGHT: 50
+  };
   var translateTypeOffer = function (type) {
     var valueType = '';
     if (type === 'flat') {

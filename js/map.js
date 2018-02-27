@@ -10,15 +10,15 @@
   var DEBOUNCE_INTERVAL = 500;
   var lastTimeout;
   var LOCATION = {
-      X: {
-        MIN: 300,
-        MAX: 900
-      },
-      Y: {
-        MIN: 100,
-        MAX: 450
-		}
-  }
+    X: {
+      MIN: 300,
+      MAX: 900
+    },
+    Y: {
+      MIN: 100,
+      MAX: 450
+    }
+  };
   var debounce = function (fun) {
     if (lastTimeout) {
       window.clearTimeout(lastTimeout);
@@ -36,9 +36,9 @@
     setFadedClass(window.noticeForm, 'notice__form--disabled');
     window.map.dropzone = 'move';
     mapPinMain.draggable = 'true';
-    for (var i = 0; i < window.formFieldSet.length; i++) {
-      if (!window.formFieldSet[i].disabled) {
-        window.formFieldSet[i].disabled = true;
+    for (var i = 0; i < formFieldSet.length; i++) {
+      if (!formFieldSet[i].disabled) {
+        formFieldSet[i].disabled = true;
       }
     }
   };
@@ -50,15 +50,15 @@
       window.map.classList.remove('map--faded');
       window.noticeForm.classList.remove('notice__form--disabled');
 
-      for (var i = 0; i < window.formFieldSet.length; i++) {
-        if (window.formFieldSet[i].disabled) {
-          window.formFieldSet[i].disabled = false;
+      for (var i = 0; i < formFieldSet.length; i++) {
+        if (formFieldSet[i].disabled) {
+          formFieldSet[i].disabled = false;
         }
       }
       window.backend.load(window.pin.createMapPins, window.errorHandler);
       var filters = window.map.querySelector('.map__filters');
       filters.addEventListener('change', function () {
-         debounce(window.pin.createMapPins.bind(this, window.incommingArray));
+        debounce(window.pin.createMapPins);
       });
     }
     var startCoords = {
