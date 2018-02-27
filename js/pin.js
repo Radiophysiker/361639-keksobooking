@@ -60,9 +60,9 @@ window.pin = (function () {
 
     createMapPins: function (arr) {
       if (typeof (arr) === 'undefined') {
-        arr = window.incommingArray;
+        arr = window.incommingData;
       } else {
-        window.incommingArray = arr.slice();
+        window.incommingData = arr.slice();
       }
       var MAX_LIMIT_PINS = 5;
       arr = window.filters(arr);
