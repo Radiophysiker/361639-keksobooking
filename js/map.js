@@ -1,11 +1,24 @@
 'use strict';
 
 (function () {
+  window.map = document.querySelector('.map');
+  window.noticeForm = document.querySelector('.notice__form');
+  var formFieldSet = window.noticeForm.querySelectorAll('fieldset');
   var mapPinMain = window.map.querySelector('.map__pin--main');
   var offsetMapPinMain = 50;
   var numberClickMapPinMain = 0;
-  var DEBOUNCE_INTERVAL = 5000;
+  var DEBOUNCE_INTERVAL = 500;
   var lastTimeout;
+  var LOCATION = {
+      X: {
+        MIN: 300,
+        MAX: 900
+      },
+      Y: {
+        MIN: 100,
+        MAX: 450
+		}
+  }
   var debounce = function (fun) {
     if (lastTimeout) {
       window.clearTimeout(lastTimeout);
@@ -45,8 +58,7 @@
       window.backend.load(window.pin.createMapPins, window.errorHandler);
       var filters = window.map.querySelector('.map__filters');
       filters.addEventListener('change', function () {
-        window.pin.createMapPins(window.incommingArray);
-        debounce(window.pin.createMapPins);
+         debounce(window.pin.createMapPins.bind(this, window.incommingArray));
       });
     }
     var startCoords = {
@@ -80,7 +92,7 @@
 
       var currentCoords = {
         x: restrictLocation((mapPinMain.offsetLeft - shift.x), 0, window.map.clientWidth),
-        y: restrictLocation((mapPinMain.offsetTop - shift.y), window.INCOMING_PARAMETERS.LOCATION.Y.MIN, window.INCOMING_PARAMETERS.LOCATION.Y.MAX)
+        y: restrictLocation((mapPinMain.offsetTop - shift.y), LOCATION.Y.MIN, LOCATION.Y.MAX)
       };
 
       mapPinMain.style.top = currentCoords.y + 'px';

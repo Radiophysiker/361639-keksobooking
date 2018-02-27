@@ -3,7 +3,10 @@
 window.card = (function () {
 
   var mapCard = document.querySelector('template').content.querySelector('.map__card').cloneNode(true);
-
+  var PHOTOS = {
+      WIDTH: 65,
+      HEIGHT: 50
+   }
   var translateTypeOffer = function (type) {
     var valueType = '';
     if (type === 'flat') {
@@ -66,7 +69,7 @@ window.card = (function () {
       mapCardText[2].textContent = object.offer.rooms + ' комнаты для ' + object.offer.guests + ' гостей';
       mapCardText[3].textContent = 'Заезд после ' + object.offer.checkin + ', выезд до ' + object.offer.checkout;
       renderFeatures(object.offer.features);
-      renderPhotos(object.offer.photos, window.INCOMING_PARAMETERS.PHOTOS.WIDTH, window.INCOMING_PARAMETERS.PHOTOS.HEIGHT);
+      renderPhotos(object.offer.photos, PHOTOS.WIDTH, PHOTOS.HEIGHT);
       mapCardText[4].textContent = object.offer.description;
 
       mapCard.querySelector('.popup__avatar').setAttribute('src', object.author.avatar);

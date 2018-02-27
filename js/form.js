@@ -30,9 +30,9 @@
   titleInput.addEventListener('invalid', function () {
     showInputError(titleInput);
     if (titleInput.validity.tooShort) {
-      titleInput.setCustomValidity('Минимальная длина заголовка — 30 символов');
+      titleInput.setCustomValidity('Минимальная длина заголовка — ' + titleInput.minLength + ' символов');
     } else if (titleInput.validity.tooLong) {
-      titleInput.setCustomValidity('Макcимальная длина заголовка — 100 символов');
+      titleInput.setCustomValidity('Макcимальная длина заголовка — ' + titleInput.maxLength + ' символов');
     } else if (titleInput.validity.valueMissing) {
       validationError(titleInput);
     } else {
@@ -81,8 +81,8 @@
       priceInput.setCustomValidity('Введи число');
     } else if (priceInput.value < minPrice) {
       priceInput.setCustomValidity('Минимальное значение — ' + minPrice);
-    } else if (priceInput.value > 1000000) {
-      priceInput.setCustomValidity('Макcимальное значение — 1000000');
+    } else if (priceInput.value > priceInput.max) {
+      priceInput.setCustomValidity('Макcимальное значение — ' + priceInput.max);
     } else if (priceInput.validity.valueMissing) {
       validationError(priceInput);
     } else {
@@ -115,7 +115,7 @@
   var capacitySelect = document.querySelector('#capacity');
   var capacitySelectItem = capacitySelect.querySelectorAll('option');
 
-  numbersRoomSelect.addEventListener('input', function () { /* Лиснер для первого клика, т.к по дефолту количество гостей = 3 */
+  numbersRoomSelect.addEventListener('input', function () { 
     for (var i = 0; i < capacitySelectItem.length; i++) {
       capacitySelectItem[i].disabled = false;
     }
