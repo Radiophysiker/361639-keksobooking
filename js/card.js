@@ -9,15 +9,17 @@ window.card = (function () {
   };
   var translateTypeOffer = function (type) {
     var valueType = '';
-    if (type === 'flat') {
-      valueType = 'Квартира';
-    }
-    if (type === 'bungalo') {
-      valueType = 'Бунгало';
-    }
-    if (type === 'house') {
-      valueType = 'Дом';
-    }
+	switch (type) {
+	  case 'flat':
+        valueType = 'Квартира';
+        break;
+	  case 'bungalo':
+        valueType = 'Бунгало';
+        break;
+	  case 'house':
+        valueType = 'Дом';
+        break;
+	}	
     return valueType;
   };
 

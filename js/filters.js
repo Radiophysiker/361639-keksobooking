@@ -10,13 +10,13 @@
   var allFilters = document.querySelectorAll('.map__filter');
 
   var priceParameters = {
-    'low': function (price) {
+    low: function (price) {
       return price < priceLimits.low;
     },
-    'middle': function (price) {
+    middle: function (price) {
       return price >= priceLimits.low && price < priceLimits.high;
     },
-    'high': function (price) {
+    high: function (price) {
       return price >= priceLimits.high;
     }
   };
