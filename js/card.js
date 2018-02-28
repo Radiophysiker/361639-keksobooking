@@ -9,17 +9,17 @@ window.card = (function () {
   };
   var translateTypeOffer = function (type) {
     var valueType = '';
-	switch (type) {
-	  case 'flat':
+    switch (type) {
+      case 'flat':
         valueType = 'Квартира';
         break;
-	  case 'bungalo':
+      case 'bungalo':
         valueType = 'Бунгало';
         break;
-	  case 'house':
+      case 'house':
         valueType = 'Дом';
         break;
-	}	
+    }
     return valueType;
   };
 

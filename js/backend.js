@@ -10,7 +10,12 @@
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
-      xhr.status === SERVER_CODE ? onSuccess(xhr.response) :  onError('Ошибка ' + xhr.status + ' ' + xhr.statusText);
+      /* использование тернарного оператора невозможно. ESLint ругается */
+      if (xhr.status === SERVER_CODE) {
+        onSuccess(xhr.response);
+      } else {
+        onError('Ошибка ' + xhr.status + ' ' + xhr.statusText);
+      }
     });
     xhr.addEventListener('error', function () {
       onError('Произошла ошибка соединения');

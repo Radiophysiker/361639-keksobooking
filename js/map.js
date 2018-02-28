@@ -61,7 +61,7 @@
         debounce(window.pin.createMapPins);
       });
     }
-	numberClickMapPinMain++;
+    numberClickMapPinMain++;
     var startCoords = {
       x: evt.clientX,
       y: evt.pageY
@@ -105,10 +105,10 @@
       };
 
       addressInput.value = 'x: ' + poinerCoords.x + ', y:' + poinerCoords.y;
-	  moveEvt.preventDefault();
+      moveEvt.preventDefault();
     };
 
-    var onMouseUpMapPinMain = function (endEvt) {
+    var onMouseUpMapPinMain = function () {
 
 
       document.removeEventListener('mousemove', onMouseMoveMapPinMain);
